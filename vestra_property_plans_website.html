@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Professional digital floor plans for real estate agents, property sellers and developers. Submit existing property documents and receive a tailored B2B quotation from Vestra.">
+  <meta name="theme-color" content="#171717">
+  <title>Vestra Property Plans | Digital Floor Plans for Real Estate</title>
+  <style>
+    :root {
+      --ink:#171717; --paper:#f7f5f0; --white:#fff; --sand:#d8cbb8;
+      --wine:#6d2438; --muted:#686862; --line:#dedbd4; --soft:#eeece6;
+      --radius:16px; --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:inherit}
+    button,input,select,textarea{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .topbar{background:var(--ink);color:#fff;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px 16px}
+    header{position:sticky;top:0;z-index:20;background:rgba(247,245,240,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:82px}
+    .brand{text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
+    .brand strong{font-family:Georgia,serif;font-size:1.65rem;letter-spacing:.11em;font-weight:500}
+    .brand span{font-size:.62rem;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+    .navlinks{display:flex;align-items:center;gap:22px}
+    .navlinks a{text-decoration:none;font-size:.9rem}
+    .navright{display:flex;align-items:center;gap:12px}
+    .lang{border:1px solid var(--line);background:transparent;border-radius:999px;padding:10px 12px;color:var(--ink)}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--ink);padding:13px 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:.9rem;cursor:pointer;transition:.2s}
+    .btn:hover{background:var(--wine);border-color:var(--wine)}
+    .btn.outline{background:transparent;color:var(--ink)}
+    .btn.outline:hover{color:#fff}
+    .hero{padding:86px 0 72px;overflow:hidden}
+    .eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wine);font-weight:700}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.08;letter-spacing:-.035em}
+    h1{font-size:clamp(2.8rem,6vw,5.8rem);max-width:850px;margin:18px 0 24px}
+    h2{font-size:clamp(2.1rem,4vw,3.7rem);margin-bottom:18px}
+    h3{font-size:1.15rem;line-height:1.3}
+    .lead{font-size:clamp(1.05rem,1.5vw,1.25rem);max-width:700px;color:#42423e}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .hero-meta{margin-top:36px;display:flex;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:.88rem}
+    .hero-art{margin-top:58px;display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+    .plan-card{background:#fff;border:1px solid var(--line);padding:24px;border-radius:var(--radius);min-height:250px;position:relative;overflow:hidden}
+    .plan-card.dark{background:#242421;color:#fff}
+    .plan-card small{display:block;letter-spacing:.13em;text-transform:uppercase;font-size:.68rem;opacity:.72;margin-bottom:18px}
+    .plan-card svg{width:100%;height:190px;display:block}
+    section{padding:86px 0}
+    .section-head{max-width:740px;margin-bottom:38px}
+    .section-head p{color:var(--muted);font-size:1.05rem}
+    .grid{display:grid;gap:16px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{padding:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+    .num{color:var(--wine);font-size:.76rem;font-weight:700;letter-spacing:.13em;margin-bottom:22px}
+    .card p{color:var(--muted);margin-bottom:0}
+    .soft{background:var(--soft)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .checklist{list-style:none;padding:0;margin:24px 0}
+    .checklist li{padding:11px 0 11px 30px;position:relative;border-bottom:1px solid var(--line)}
+    .checklist li:before{content:"✓";position:absolute;left:0;color:var(--wine);font-weight:700}
+    .process{counter-reset:step}
+    .process .card{counter-increment:step}
+    .process .num:before{content:"0" counter(step) " / "}
+    .sample{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .sample-visual{background:#ebe8e0;padding:18px;min-height:230px;display:flex;align-items:center;justify-content:center}
+    .sample-visual svg{max-width:100%;height:auto;max-height:210px}
+    .sample-copy{padding:22px}
+    .sample-copy p{color:var(--muted);margin-bottom:0;font-size:.94rem}
+    .notice{border-left:3px solid var(--wine);padding:14px 18px;background:#fff;font-size:.9rem;color:#494943}
+    .cta-band{background:var(--wine);color:#fff;padding:60px;border-radius:var(--radius);display:flex;justify-content:space-between;gap:30px;align-items:center}
+    .cta-band h2{max-width:650px;margin-bottom:12px}
+    .cta-band p{color:#f1e5e8;margin-bottom:0;max-width:650px}
+    .cta-band .btn{background:#fff;color:var(--ink);border-color:#fff;white-space:nowrap}
+    .faq details{border-bottom:1px solid var(--line);padding:19px 0}
+    .faq summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    .faq summary:after{content:"+";font-size:1.4rem;font-weight:400}
+    .faq details[open] summary:after{content:"−"}
+    .faq details p{margin:14px 0 0;color:var(--muted);max-width:850px}
+    .contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+    .contact-info p{color:var(--muted)}
+    form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:block;font-size:.82rem;font-weight:700;margin-bottom:7px}
+    input,select,textarea{width:100%;padding:12px 13px;border:1px solid #cfccc4;border-radius:9px;background:#fff;color:var(--ink)}
+    textarea{min-height:115px;resize:vertical}
+    .field.full{grid-column:1/-1}
+    .smallprint{font-size:.78rem;color:var(--muted);margin:14px 0}
+    footer{padding:32px 0;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+    .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .foot a{color:inherit}
+    .mobile-menu{display:none}
+    @media(max-width:900px){.navlinks{display:none}.hero{padding-top:60px}.grid.three{grid-template-columns:1fr 1fr}.split,.contact{grid-template-columns:1fr;gap:32px}.cta-band{padding:38px;align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){.wrap{width:min(100% - 28px,var(--max))}.nav{min-height:72px}.brand strong{font-size:1.35rem}.brand span{font-size:.55rem}.navright .btn{display:none}.hero{padding:48px 0}.hero-art{grid-template-columns:1fr;margin-top:36px}.plan-card{min-height:220px}section{padding:62px 0}.grid.two,.grid.three{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.card{padding:22px}.cta-band{padding:28px}.hero-meta{gap:10px 16px}}
+  </style>
+</head>
+<body>
+  <div class="topbar" data-i18n="topbar">DIGITAL FLOOR PLANS · B2B PROPERTY PRESENTATION</div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Vestra Property Plans home">
+        <strong>VESTRA</strong><span data-i18n="brandSub">PROPERTY PLANS · BY VESTRA INTERIOR & DESIGN</span>
+      </a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#process" data-i18n="navProcess">How it works</a>
+        <a href="#examples" data-i18n="navExamples">Examples</a>
+        <a href="#faq" data-i18n="navFaq">FAQ</a>
+      </nav>
+      <div class="navright">
+        <select class="lang" id="language" aria-label="Choose language">
+          <option value="en">EN · English</option><option value="nl">NL · Nederlands</option>
+          <option value="es">ES · Español</option><option value="fr">FR · Français</option>
+        </select>
+        <a class="btn" href="#contact" data-i18n="navCta">Request a quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow" data-i18n="heroEyebrow">A digital-first service for property professionals</div>
+        <h1 data-i18n="heroTitle">From property documents to a professional sales presentation.</h1>
+        <p class="lead" data-i18n="heroLead">Send us your existing property information, cadastral records or architectural drawings. We prepare a clear, professionally presented digital floor plan to support the marketing and sale of your property.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact" data-i18n="heroCta1">Start your enquiry</a>
+          <a class="btn outline" href="#process" data-i18n="heroCta2">Discover the process</a>
+        </div>
+        <div class="hero-meta">
+          <span data-i18n="meta1">✓ Digital workflow</span><span data-i18n="meta2">✓ PDF + PNG/JPG delivery</span><span data-i18n="meta3">✓ B2B service · Quote on request</span>
+        </div>
+        <div class="hero-art" aria-label="Illustrative floor plan previews">
+          <div class="plan-card">
+            <small data-i18n="artLabel1">Illustrative floor plan · Residential</small>
+            <svg viewBox="0 0 600 260" role="img" aria-label="Illustrative apartment floor plan">
+              <g fill="none" stroke="#222" stroke-width="5" stroke-linecap="square">
+                <path d="M35 25H355V90H555V230H35Z"/><path d="M185 25V135H35"/><path d="M185 135H355V230"/><path d="M355 90V160H555"/><path d="M95 135V230"/><path d="M355 160H430V230"/>
+              </g>
+              <g fill="none" stroke="#aaa397" stroke-width="2"><path d="M52 25V8H165M210 25V8H330M555 105H580V145M35 175H15V215"/><path d="M65 25V68M85 25V68M65 68H85M205 230V205M225 230V205M205 205H225"/></g>
+              <g fill="#6d2438" font-family="Arial" font-size="12"><text x="75" y="94">BEDROOM</text><text x="225" y="80">BEDROOM</text><text x="220" y="185">LIVING</text><text x="410" y="135">KITCHEN</text><text x="450" y="205">BATH</text></g>
+            </svg>
+          </div>
+          <div class="plan-card dark">
+            <small data-i18n="artLabel2">A clearer property presentation</small>
+            <svg viewBox="0 0 400 260" role="img" aria-label="Illustrative technical plan">
+              <g fill="none" stroke="#f4f0e8" stroke-width="4">
+                <path d="M38 30H350V220H38Z"/><path d="M38 120H165V30M165 120H260V220M260 120H350"/><path d="M165 30V75H260V120"/>
+              </g>
+              <g fill="none" stroke="#bcae9b" stroke-width="1.5"><path d="M38 15V5H350V15M25 30H12V220H25"/><path d="M95 30V46M115 30V46M95 46H115M260 150H282M260 170H282M282 150V170"/></g>
+              <g fill="#e8d9c5" font-family="Arial" font-size="11"><text x="65" y="82">ROOM 01</text><text x="195" y="63">ROOM 02</text><text x="185" y="174">LIVING AREA</text><text x="275" y="174">ROOM 03</text></g>
+            </svg>
+          </div>
+        </div>
+        <p class="smallprint" data-i18n="illustrationNote">Illustrative visuals only. Final floor plans are prepared from suitable source documents and the agreed scope.</p>
+      </div>
+    </section>
+
+    <section class="soft" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="servicesEyebrow">The service</div>
+          <h2 data-i18n="servicesTitle">A simpler way to prepare property for the market.</h2>
+          <p data-i18n="servicesIntro">Our digital-first workflow is designed for real estate professionals who need clear, consistent floor plans without coordinating a standard on-site appointment for every property.</p>
+        </div>
+        <div class="grid three">
+          <article class="card"><div class="num">01</div><h3 data-i18n="service1Title">Digital 2D floor plans</h3><p data-i18n="service1Text">Clean, easy-to-read floor plans based on suitable existing drawings or source measurements, prepared for property marketing and consumer understanding.</p></article>
+          <article class="card"><div class="num">02</div><h3 data-i18n="service2Title">Floor plan redrawing</h3><p data-i18n="service2Text">Existing plans can be redrawn into a consistent, professional visual format, subject to the quality and completeness of the supplied documents.</p></article>
+          <article class="card"><div class="num">03</div><h3 data-i18n="service3Title">Multi-property packages</h3><p data-i18n="service3Text">Consistent digital deliverables for agencies, property portfolios, commercial units and residential development projects.</p></article>
+          <article class="card"><div class="num">04</div><h3 data-i18n="service4Title">Sales presentation support</h3><p data-i18n="service4Text">Floor plans formatted to complement a property listing, sales brochure or other agreed marketing material.</p></article>
+          <article class="card"><div class="num">05</div><h3 data-i18n="service5Title">Residential & commercial</h3><p data-i18n="service5Text">A service for apartments, houses, offices, retail premises and other property types where suitable source information is available.</p></article>
+          <article class="card"><div class="num">06</div><h3 data-i18n="service6Title">Additional visualisation</h3><p data-i18n="service6Text">Alternative layouts, furnished plans or other visualisation work can be discussed as separate services where the brief and source material allow.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <div class="eyebrow" data-i18n="valueEyebrow">Built around your workflow</div>
+          <h2 data-i18n="valueTitle">You provide the documents. We prepare the presentation.</h2>
+          <p class="lead" data-i18n="valueLead">Start with what you already have: existing floor plans, architectural drawings or relevant cadastral information. We review the material and confirm what can reasonably be produced before work begins.</p>
+          <ul class="checklist">
+            <li data-i18n="value1">No standard on-site appointment required.</li>
+            <li data-i18n="value2">Digital ordering and communication.</li>
+            <li data-i18n="value3">Professional PDF and PNG/JPG delivery.</li>
+            <li data-i18n="value4">Suitable for consumer-facing property marketing.</li>
+            <li data-i18n="value5">Tailored quotations for B2B clients and larger portfolios.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="notice" data-i18n="sourceNotice"><strong>Source-document note:</strong> Cadastral information alone may not show the current internal layout or verified dimensions. The deliverable depends on the source documents supplied. Any gaps or uncertainties will be discussed before the order is confirmed.</div>
+          <div style="height:16px"></div>
+          <div class="card">
+            <div class="num" data-i18n="deliverableEyebrow">Standard digital formats</div>
+            <h3 data-i18n="deliverableTitle">Ready for your agreed marketing use.</h3>
+            <p data-i18n="deliverableText">Final files are delivered as PDF and PNG/JPG, as agreed for the project. The floor plan is intended to support consumer understanding and property marketing; it is not automatically a certified architectural or cadastral document.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="processEyebrow">How it works</div>
+          <h2 data-i18n="processTitle">Four clear steps. One digital workflow.</h2>
+          <p data-i18n="processIntro">The scope, source material, price and delivery expectations are agreed before production begins.</p>
+        </div>
+        <div class="grid four grid three process">
+          <article class="card"><div class="num"></div><h3 data-i18n="step1Title">Submit your enquiry</h3><p data-i18n="step1Text">Tell us about the property, intended use and available documents.</p></article>
+          <article class="card"><div class="num"></div><h3 data-i18n="step2Title">Source review & quote</h3><p data-i18n="step2Text">We review the available information and confirm feasibility, scope and price.</p></article>
+          <article class="card"><div class="num"></div><h3 data-i18n="step3Title">Digital preparation</h3><p data-i18n="step3Text">The agreed floor plan is prepared from the accepted source material.</p></article>
+          <article class="card"><div class="num"></div><h3 data-i18n="step4Title">Digital delivery</h3><p data-i18n="step4Text">Receive the agreed PDF and PNG/JPG files for the intended presentation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="examplesEyebrow">Illustrative applications</div>
+          <h2 data-i18n="examplesTitle">One clear standard across different property types.</h2>
+          <p data-i18n="examplesIntro">The visuals below are illustrative examples of presentation styles, not completed Vestra client projects.</p>
+        </div>
+        <div class="grid three">
+          <article class="sample">
+            <div class="sample-visual">
+              <svg viewBox="0 0 300 200" width="300" role="img" aria-label="Illustrative apartment plan"><g fill="none" stroke="#242421" stroke-width="4"><path d="M25 20H275V180H25Z"/><path d="M125 20V95H25M125 95H205V180M205 95H275M70 95V180"/></g><g fill="#6d2438" font-size="9" font-family="Arial"><text x="48" y="60">BEDROOM</text><text x="155" y="60">ROOM</text><text x="140" y="140">LIVING</text><text x="220" y="135">KITCHEN</text></g></svg>
+            </div>
+            <div class="sample-copy"><h3 data-i18n="example1Title">Residential property</h3><p data-i18n="example1Text">A clear 2D layout to support apartment and house listings.</p></div>
+          </article>
+          <article class="sample">
+            <div class="sample-visual">
+              <svg viewBox="0 0 300 200" width="300" role="img" aria-label="Illustrative commercial floor plan"><g fill="none" stroke="#242421" stroke-width="4"><path d="M20 20H280V180H20Z"/><path d="M20 75H105V180M105 75H195V20M195 20V110H280M195 110H105"/></g><g fill="#6d2438" font-size="9" font-family="Arial"><text x="35" y="50">OFFICE 01</text><text x="125" y="55">MEETING</text><text x="130" y="145">OPEN OFFICE</text><text x="210" y="80">RECEPTION</text></g></svg>
+            </div>
+            <div class="sample-copy"><h3 data-i18n="example2Title">Commercial space</h3><p data-i18n="example2Text">A readable layout for offices, retail units and commercial listings.</p></div>
+          </article>
+          <article class="sample">
+            <div class="sample-visual">
+              <svg viewBox="0 0 300 200" width="300" role="img" aria-label="Illustrative development unit plan"><g fill="none" stroke="#242421" stroke-width="4"><path d="M20 20H280V180H20Z"/><path d="M20 100H115V20M115 100H190V180M190 100H280M190 20V60H280"/></g><g fill="#6d2438" font-size="9" font-family="Arial"><text x="38" y="60">UNIT A</text><text x="135" y="65">UNIT B</text><text x="125" y="145">LIVING AREA</text><text x="210" y="145">ROOM</text></g></svg>
+            </div>
+            <div class="sample-copy"><h3 data-i18n="example3Title">Development units</h3><p data-i18n="example3Text">A consistent style for multiple units in a property portfolio or development.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap">
+        <div class="cta-band">
+          <div><div class="eyebrow" style="color:#f1cbd5" data-i18n="ctaEyebrow">For real estate businesses</div><h2 data-i18n="ctaTitle">Make your property presentation simpler.</h2><p data-i18n="ctaText">Send the documents you have. We will review the request and propose the appropriate scope for your property or portfolio.</p></div>
+          <a class="btn" href="#contact" data-i18n="ctaButton">Request a B2B quote</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap split">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="faqEyebrow">Frequently asked questions</div>
+          <h2 data-i18n="faqTitle">Before you get started.</h2>
+          <p data-i18n="faqIntro">Clear expectations help us deliver the right result for your property marketing.</p>
+        </div>
+        <div class="faq">
+          <details><summary data-i18n="faq1Q">What documents can I provide?</summary><p data-i18n="faq1A">You can submit existing floor plans, architectural drawings, available cadastral information or other relevant property documents. We will assess whether the information is suitable for the requested output.</p></details>
+          <details><summary data-i18n="faq2Q">Can you work from cadastral information alone?</summary><p data-i18n="faq2A">Sometimes it may help identify or contextualise a property, but it may not contain the internal layout or verified dimensions. We confirm feasibility after reviewing the available source information.</p></details>
+          <details><summary data-i18n="faq3Q">What file formats will I receive?</summary><p data-i18n="faq3A">The standard agreed delivery formats are PDF and PNG/JPG. Any additional formats or editable source files must be agreed in writing.</p></details>
+          <details><summary data-i18n="faq4Q">Do you offer fixed prices?</summary><p data-i18n="faq4A">Pricing is available on request. Each quotation depends on the source material, property type, complexity, number of plans, requested presentation and agreed delivery schedule.</p></details>
+          <details><summary data-i18n="faq5Q">Is this an official or certified architectural drawing?</summary><p data-i18n="faq5A">No, not by default. The service is intended for consumer understanding and property marketing. Official, cadastral, permitting or construction use requires separate confirmation and may require a qualified local professional.</p></details>
+          <details><summary data-i18n="faq6Q">Do B2B terms and contracts apply?</summary><p data-i18n="faq6A">Yes. Services are provided to business clients under the applicable written quotation, service agreement and terms and conditions. Work begins after the scope and commercial terms have been accepted.</p></details>
+          <details><summary data-i18n="faq7Q">How do you handle confidential property documents?</summary><p data-i18n="faq7A">Document submission and processing should follow the agreed confidentiality and data-handling arrangements. Please do not send sensitive documents until an approved submission method and applicable terms are in place.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="contact">
+      <div class="wrap contact">
+        <div class="contact-info">
+          <div class="eyebrow" data-i18n="contactEyebrow">Start a project</div>
+          <h2 data-i18n="contactTitle">Request a tailored quotation.</h2>
+          <p data-i18n="contactText">Tell us about your business, property and available documents. We will review your enquiry and respond with the next steps.</p>
+          <p><strong data-i18n="contactEmailLabel">Email</strong><br><a href="mailto:info@vestra-interior.com">info@vestra-interior.com</a></p>
+          <p><strong>WhatsApp</strong><br><a href="https://wa.me/message/WWT3SMJLSD4TK1" target="_blank" rel="noopener">Contact Vestra on WhatsApp</a></p>
+          <p class="smallprint" data-i18n="contractNote">B2B enquiries are subject to the applicable quotation, contract and terms and conditions.</p>
+        </div>
+        <form id="enquiryForm">
+          <div class="fields">
+            <div class="field"><label for="name" data-i18n="formName">Name</label><input id="name" name="name" required autocomplete="name"></div>
+            <div class="field"><label for="company" data-i18n="formCompany">Company</label><input id="company" name="company" required autocomplete="organization"></div>
+            <div class="field"><label for="email" data-i18n="formEmail">Business email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+            <div class="field"><label for="propertyType" data-i18n="formProperty">Property type</label><select id="propertyType" name="propertyType" required><option value="" data-i18n="formChoose">Please select</option><option data-i18n="optResidential">Residential</option><option data-i18n="optCommercial">Commercial</option><option data-i18n="optDevelopment">Development / multiple units</option><option data-i18n="optOther">Other</option></select></div>
+            <div class="field"><label for="quantity" data-i18n="formQuantity">Number of floor plans</label><input id="quantity" name="quantity" type="number" min="1" placeholder="e.g. 1"></div>
+            <div class="field"><label for="source" data-i18n="formSource">Available source documents</label><select id="source" name="source"><option value="" data-i18n="formChoose">Please select</option><option data-i18n="sourcePlans">Existing floor plan / drawing</option><option data-i18n="sourceCadastral">Cadastral information</option><option data-i18n="sourceBoth">Both</option><option data-i18n="sourceOther">Other / unsure</option></select></div>
+            <div class="field full"><label for="details" data-i18n="formDetails">Project details</label><textarea id="details" name="details" required></textarea></div>
+            <div class="field full"><label><input type="checkbox" required style="width:auto;margin-right:8px" data-i18n="formConsent"> <span data-i18n="formConsentText">I agree that Vestra may contact me about this business enquiry.</span></label></div>
+            <div class="field full"><button class="btn" type="submit" data-i18n="formSubmit">Prepare email enquiry</button><p class="smallprint" data-i18n="formNote">This demo opens your email application. A secure upload portal and automated submission require website form/email integration.</p></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div><strong>VESTRA PROPERTY PLANS</strong><br><span data-i18n="footerSub">A specialised digital service by Vestra Interior & Design.</span></div>
+      <div>© <span id="year"></span> Vestra Interior & Design · <a href="mailto:info@vestra-interior.com">info@vestra-interior.com</a></div>
+      <div><a href="#contact" data-i18n="footerContact">Contact</a> · <a href="#" data-i18n="footerPrivacy">Privacy policy (add before launch)</a> · <a href="#" data-i18n="footerTerms">B2B terms (add before launch)</a></div>
+    </div>
+  </footer>
+
+<script>
+const translations = {
+en:{
+topbar:"DIGITAL FLOOR PLANS · B2B PROPERTY PRESENTATION",brandSub:"PROPERTY PLANS · BY VESTRA INTERIOR & DESIGN",navServices:"Services",navProcess:"How it works",navExamples:"Examples",navFaq:"FAQ",navCta:"Request a quote",
+heroEyebrow:"A digital-first service for property professionals",heroTitle:"From property documents to a professional sales presentation.",heroLead:"Send us your existing property information, cadastral records or architectural drawings. We prepare a clear, professionally presented digital floor plan to support the marketing and sale of your property.",heroCta1:"Start your enquiry",heroCta2:"Discover the process",meta1:"✓ Digital workflow",meta2:"✓ PDF + PNG/JPG delivery",meta3:"✓ B2B service · Quote on request",artLabel1:"Illustrative floor plan · Residential",artLabel2:"A clearer property presentation",illustrationNote:"Illustrative visuals only. Final floor plans are prepared from suitable source documents and the agreed scope.",
+servicesEyebrow:"The service",servicesTitle:"A simpler way to prepare property for the market.",servicesIntro:"Our digital-first workflow is designed for real estate professionals who need clear, consistent floor plans without coordinating a standard on-site appointment for every property.",service1Title:"Digital 2D floor plans",service1Text:"Clean, easy-to-read floor plans based on suitable existing drawings or source measurements, prepared for property marketing and consumer understanding.",service2Title:"Floor plan redrawing",service2Text:"Existing plans can be redrawn into a consistent, professional visual format, subject to the quality and completeness of the supplied documents.",service3Title:"Multi-property packages",service3Text:"Consistent digital deliverables for agencies, property portfolios, commercial units and residential development projects.",service4Title:"Sales presentation support",service4Text:"Floor plans formatted to complement a property listing, sales brochure or other agreed marketing material.",service5Title:"Residential & commercial",service5Text:"A service for apartments, houses, offices, retail premises and other property types where suitable source information is available.",service6Title:"Additional visualisation",service6Text:"Alternative layouts, furnished plans or other visualisation work can be discussed as separate services where the brief and source material allow.",
+valueEyebrow:"Built around your workflow",valueTitle:"You provide the documents. We prepare the presentation.",valueLead:"Start with what you already have: existing floor plans, architectural drawings or relevant cadastral information. We review the material and confirm what can reasonably be produced before work begins.",value1:"No standard on-site appointment required.",value2:"Digital ordering and communication.",value3:"Professional PDF and PNG/JPG delivery.",value4:"Suitable for consumer-facing property marketing.",value5:"Tailored quotations for B2B clients and larger portfolios.",sourceNotice:"Source-document note: Cadastral information alone may not show the current internal layout or verified dimensions. The deliverable depends on the source documents supplied. Any gaps or uncertainties will be discussed before the order is confirmed.",deliverableEyebrow:"Standard digital formats",deliverableTitle:"Ready for your agreed marketing use.",deliverableText:"Final files are delivered as PDF and PNG/JPG, as agreed for the project. The floor plan is intended to support consumer understanding and property marketing; it is not automatically a certified architectural or cadastral document.",
+processEyebrow:"How it works",processTitle:"Four clear steps. One digital workflow.",processIntro:"The scope, source material, price and delivery expectations are agreed before production begins.",step1Title:"Submit your enquiry",step1Text:"Tell us about the property, intended use and available documents.",step2Title:"Source review & quote",step2Text:"We review the available information and confirm feasibility, scope and price.",step3Title:"Digital preparation",step3Text:"The agreed floor plan is prepared from the accepted source material.",step4Title:"Digital delivery",step4Text:"Receive the agreed PDF and PNG/JPG files for the intended presentation.",
+examplesEyebrow:"Illustrative applications",examplesTitle:"One clear standard across different property types.",examplesIntro:"The visuals below are illustrative examples of presentation styles, not completed Vestra client projects.",example1Title:"Residential property",example1Text:"A clear 2D layout to support apartment and house listings.",example2Title:"Commercial space",example2Text:"A readable layout for offices, retail units and commercial listings.",example3Title:"Development units",example3Text:"A consistent style for multiple units in a property portfolio or development.",
+ctaEyebrow:"For real estate businesses",ctaTitle:"Make your property presentation simpler.",ctaText:"Send the documents you have. We will review the request and propose the appropriate scope for your property or portfolio.",ctaButton:"Request a B2B quote",
+faqEyebrow:"Frequently asked questions",faqTitle:"Before you get started.",faqIntro:"Clear expectations help us deliver the right result for your property marketing.",faq1Q:"What documents can I provide?",faq1A:"You can submit existing floor plans, architectural drawings, available cadastral information or other relevant property documents. We will assess whether the information is suitable for the requested output.",faq2Q:"Can you work from cadastral information alone?",faq2A:"Sometimes it may help identify or contextualise a property, but it may not contain the internal layout or verified dimensions. We confirm feasibility after reviewing the available source information.",faq3Q:"What file formats will I receive?",faq3A:"The standard agreed delivery formats are PDF and PNG/JPG. Any additional formats or editable source files must be agreed in writing.",faq4Q:"Do you offer fixed prices?",faq4A:"Pricing is available on request. Each quotation depends on the source material, property type, complexity, number of plans, requested presentation and agreed delivery schedule.",faq5Q:"Is this an official or certified architectural drawing?",faq5A:"No, not by default. The service is intended for consumer understanding and property marketing. Official, cadastral, permitting or construction use requires separate confirmation and may require a qualified local professional.",faq6Q:"Do B2B terms and contracts apply?",faq6A:"Yes. Services are provided to business clients under the applicable written quotation, service agreement and terms and conditions. Work begins after the scope and commercial terms have been accepted.",faq7Q:"How do you handle confidential property documents?",faq7A:"Document submission and processing should follow the agreed confidentiality and data-handling arrangements. Please do not send sensitive documents until an approved submission method and applicable terms are in place.",
+contactEyebrow:"Start a project",contactTitle:"Request a tailored quotation.",contactText:"Tell us about your business, property and available documents. We will review your enquiry and respond with the next steps.",contactEmailLabel:"Email",contractNote:"B2B enquiries are subject to the applicable quotation, contract and terms and conditions.",formName:"Name",formCompany:"Company",formEmail:"Business email",formProperty:"Property type",formChoose:"Please select",optResidential:"Residential",optCommercial:"Commercial",optDevelopment:"Development / multiple units",optOther:"Other",formQuantity:"Number of floor plans",formSource:"Available source documents",sourcePlans:"Existing floor plan / drawing",sourceCadastral:"Cadastral information",sourceBoth:"Both",sourceOther:"Other / unsure",formDetails:"Project details",formConsentText:"I agree that Vestra may contact me about this business enquiry.",formSubmit:"Prepare email enquiry",formNote:"This demo opens your email application. A secure upload portal and automated submission require website form/email integration.",footerSub:"A specialised digital service by Vestra Interior & Design.",footerContact:"Contact",footerPrivacy:"Privacy policy (add before launch)",footerTerms:"B2B terms (add before launch)"
+},
+nl:{
+topbar:"DIGITALE PLATTEGRONDEN · B2B VASTGOEDPRESENTATIE",brandSub:"PROPERTY PLANS · BY VESTRA INTERIOR & DESIGN",navServices:"Diensten",navProcess:"Werkwijze",navExamples:"Voorbeelden",navFaq:"Veelgestelde vragen",navCta:"Offerte aanvragen",
+heroEyebrow:"Een digitale dienst voor vastgoedprofessionals",heroTitle:"Van vastgoeddocumenten naar een professionele verkooppresentatie.",heroLead:"Stuur ons bestaande vastgoedgegevens, kadastrale informatie of bouwtekeningen. Wij maken hiervan een heldere, professioneel gepresenteerde digitale plattegrond ter ondersteuning van de marketing en verkoop van vastgoed.",heroCta1:"Start je aanvraag",heroCta2:"Bekijk de werkwijze",meta1:"✓ Digitaal proces",meta2:"✓ Oplevering in PDF + PNG/JPG",meta3:"✓ B2B-dienst · Prijs op aanvraag",artLabel1:"Illustratieve plattegrond · Woning",artLabel2:"Een heldere vastgoedpresentatie",illustrationNote:"Uitsluitend illustratieve beelden. Definitieve plattegronden worden gemaakt op basis van geschikte bronbestanden en de overeengekomen opdracht.",
+servicesEyebrow:"De dienst",servicesTitle:"Een eenvoudigere manier om vastgoed verkoopklaar te presenteren.",servicesIntro:"Onze digitale werkwijze is ontwikkeld voor vastgoedprofessionals die duidelijke, consistente plattegronden nodig hebben zonder voor ieder object standaard een afspraak op locatie te organiseren.",service1Title:"Digitale 2D-plattegronden",service1Text:"Heldere, goed leesbare plattegronden op basis van geschikte bestaande tekeningen of bronmetingen, bedoeld voor vastgoedmarketing en consumenteninzicht.",service2Title:"Plattegronden opnieuw uitwerken",service2Text:"Bestaande plattegronden kunnen worden omgezet naar een consistente, professionele presentatie, afhankelijk van de kwaliteit en volledigheid van de aangeleverde documenten.",service3Title:"Pakketten voor meerdere objecten",service3Text:"Consistente digitale bestanden voor makelaarskantoren, vastgoedportefeuilles, commerciële ruimtes en woningontwikkelingen.",service4Title:"Ondersteuning bij verkoopmaterialen",service4Text:"Plattegronden die aansluiten op een woningadvertentie, verkoopbrochure of ander overeengekomen marketingmateriaal.",service5Title:"Woningen en commercieel vastgoed",service5Text:"Voor appartementen, woningen, kantoren, winkelruimtes en andere vastgoedtypen waarvoor geschikte broninformatie beschikbaar is.",service6Title:"Aanvullende visualisaties",service6Text:"Alternatieve indelingen, ingerichte plattegronden of andere visualisaties kunnen als aanvullende dienst worden besproken, afhankelijk van de opdracht en broninformatie.",
+valueEyebrow:"Aansluitend op jouw werkwijze",valueTitle:"Jij levert de documenten aan. Wij verzorgen de presentatie.",valueLead:"Begin met de informatie die al beschikbaar is: bestaande plattegronden, bouwtekeningen of relevante kadastrale gegevens. Wij beoordelen het materiaal en bevestigen wat hiermee verantwoord kan worden uitgewerkt voordat de productie start.",value1:"Geen standaardafspraak op locatie nodig.",value2:"Digitaal aanvragen en communiceren.",value3:"Professionele oplevering in PDF en PNG/JPG.",value4:"Geschikt voor consumentgerichte vastgoedmarketing.",value5:"Offertes op maat voor B2B-klanten en grotere portefeuilles.",sourceNotice:"Belangrijk over bronbestanden: alleen kadastrale informatie toont mogelijk niet de actuele interne indeling of geverifieerde afmetingen. Het eindresultaat hangt af van de aangeleverde documenten. Ontbrekende of onduidelijke informatie bespreken we vóór bevestiging van de opdracht.",deliverableEyebrow:"Standaard digitale formaten",deliverableTitle:"Gereed voor het overeengekomen marketingdoel.",deliverableText:"De definitieve bestanden worden volgens afspraak geleverd als PDF en PNG/JPG. De plattegrond is bedoeld voor consumenteninzicht en vastgoedmarketing en is niet automatisch een gecertificeerde bouwkundige of kadastrale tekening.",
+processEyebrow:"Werkwijze",processTitle:"Vier duidelijke stappen. Eén digitaal proces.",processIntro:"De opdracht, bronbestanden, prijs en leveringsverwachtingen worden vastgelegd voordat de productie begint.",step1Title:"Dien je aanvraag in",step1Text:"Vertel ons over het vastgoed, het beoogde gebruik en de beschikbare documenten.",step2Title:"Beoordeling en offerte",step2Text:"Wij beoordelen de informatie en bevestigen de haalbaarheid, opdracht en prijs.",step3Title:"Digitale uitwerking",step3Text:"De overeengekomen plattegrond wordt gemaakt op basis van de geaccepteerde broninformatie.",step4Title:"Digitale oplevering",step4Text:"Je ontvangt de overeengekomen PDF- en PNG/JPG-bestanden voor de beoogde presentatie.",
+examplesEyebrow:"Illustratieve toepassingen",examplesTitle:"Eén heldere standaard voor verschillende vastgoedtypen.",examplesIntro:"De onderstaande beelden zijn illustratieve presentatiestijlen en geen afgeronde Vestra-klantprojecten.",example1Title:"Woningen",example1Text:"Een duidelijke 2D-indeling ter ondersteuning van woning- en appartementadvertenties.",example2Title:"Commerciële ruimtes",example2Text:"Een overzichtelijke indeling voor kantoren, winkelruimtes en commercieel vastgoed.",example3Title:"Ontwikkelprojecten",example3Text:"Een consistente stijl voor meerdere eenheden binnen een portefeuille of ontwikkeling.",
+ctaEyebrow:"Voor vastgoedbedrijven",ctaTitle:"Maak vastgoedpresentatie eenvoudiger.",ctaText:"Stuur de documenten die je beschikbaar hebt. Wij beoordelen de aanvraag en stellen een passende opdracht voor jouw object of portefeuille voor.",ctaButton:"B2B-offerte aanvragen",
+faqEyebrow:"Veelgestelde vragen",faqTitle:"Voordat je begint.",faqIntro:"Duidelijke verwachtingen helpen om het juiste resultaat voor vastgoedmarketing te leveren.",faq1Q:"Welke documenten kan ik aanleveren?",faq1A:"Je kunt bestaande plattegronden, bouwtekeningen, beschikbare kadastrale informatie of andere relevante vastgoeddocumenten aanleveren. Wij beoordelen of deze geschikt zijn voor het gewenste resultaat.",faq2Q:"Kunnen jullie uitsluitend met kadastrale gegevens werken?",faq2A:"Deze gegevens kunnen helpen om een object te identificeren of in context te plaatsen, maar bevatten mogelijk geen interne indeling of geverifieerde afmetingen. Na beoordeling van de beschikbare informatie bevestigen we de haalbaarheid.",faq3Q:"Welke bestandsformaten ontvang ik?",faq3A:"De overeengekomen standaardformaten zijn PDF en PNG/JPG. Aanvullende formaten of bewerkbare bronbestanden moeten schriftelijk worden overeengekomen.",faq4Q:"Werken jullie met vaste prijzen?",faq4A:"Prijzen zijn op aanvraag. De offerte hangt af van de bronbestanden, het vastgoedtype, de complexiteit, het aantal plattegronden, de gewenste presentatie en de overeengekomen levertijd.",faq5Q:"Is dit een officiële of gecertificeerde bouwtekening?",faq5A:"Niet standaard. De dienst is bedoeld voor consumenteninzicht en vastgoedmarketing. Voor officieel kadastraal gebruik, vergunningen of bouwkundige toepassingen is afzonderlijke bevestiging nodig en kan een bevoegde lokale professional vereist zijn.",faq6Q:"Zijn B2B-contracten en voorwaarden van toepassing?",faq6A:"Ja. De dienstverlening aan zakelijke klanten valt onder de toepasselijke schriftelijke offerte, dienstverleningsovereenkomst en algemene voorwaarden. De werkzaamheden starten nadat de opdracht en commerciële afspraken zijn geaccepteerd.",faq7Q:"Hoe gaan jullie om met vertrouwelijke vastgoeddocumenten?",faq7A:"Aanlevering en verwerking moeten plaatsvinden volgens de overeengekomen vertrouwelijkheids- en gegevensverwerkingsafspraken. Verstuur geen gevoelige documenten voordat een goedgekeurde aanlevermethode en toepasselijke voorwaarden beschikbaar zijn.",
+contactEyebrow:"Start een project",contactTitle:"Vraag een offerte op maat aan.",contactText:"Vertel ons over je bedrijf, het vastgoed en de beschikbare documenten. Wij beoordelen je aanvraag en nemen contact op over de vervolgstappen.",contactEmailLabel:"E-mail",contractNote:"B2B-aanvragen vallen onder de toepasselijke offerte, overeenkomst en algemene voorwaarden.",formName:"Naam",formCompany:"Bedrijf",formEmail:"Zakelijk e-mailadres",formProperty:"Type vastgoed",formChoose:"Maak een keuze",optResidential:"Woningen",optCommercial:"Commercieel vastgoed",optDevelopment:"Ontwikkeling / meerdere eenheden",optOther:"Anders",formQuantity:"Aantal plattegronden",formSource:"Beschikbare bronbestanden",sourcePlans:"Bestaande plattegrond / tekening",sourceCadastral:"Kadastrale informatie",sourceBoth:"Beide",sourceOther:"Anders / niet zeker",formDetails:"Projectinformatie",formConsentText:"Ik ga ermee akkoord dat Vestra contact met mij opneemt over deze zakelijke aanvraag.",formSubmit:"E-mailaanvraag voorbereiden",formNote:"Dit voorbeeld opent je e-mailprogramma. Een beveiligde uploadomgeving en automatische verzending vereisen koppeling met een formulier- en e-maildienst.",footerSub:"Een gespecialiseerde digitale dienst van Vestra Interior & Design.",footerContact:"Contact",footerPrivacy:"Privacyverklaring (toevoegen vóór lancering)",footerTerms:"B2B-voorwaarden (toevoegen vóór lancering)"
+},
+es:{
+topbar:"PLANOS DIGITALES · PRESENTACIÓN INMOBILIARIA B2B",brandSub:"PROPERTY PLANS · BY VESTRA INTERIOR & DESIGN",navServices:"Servicios",navProcess:"Cómo funciona",navExamples:"Ejemplos",navFaq:"Preguntas frecuentes",navCta:"Solicitar presupuesto",
+heroEyebrow:"Un servicio digital para profesionales inmobiliarios",heroTitle:"De la documentación del inmueble a una presentación profesional para la venta.",heroLead:"Envíenos la información disponible del inmueble, los datos catastrales o los planos arquitectónicos. Preparamos un plano digital claro y profesional para apoyar la comercialización y venta de la propiedad.",heroCta1:"Iniciar consulta",heroCta2:"Ver el proceso",meta1:"✓ Proceso digital",meta2:"✓ Entrega en PDF + PNG/JPG",meta3:"✓ Servicio B2B · Precio bajo solicitud",artLabel1:"Plano ilustrativo · Vivienda",artLabel2:"Una presentación inmobiliaria más clara",illustrationNote:"Imágenes únicamente ilustrativas. Los planos finales se preparan a partir de documentación adecuada y del alcance acordado.",
+servicesEyebrow:"El servicio",servicesTitle:"Una forma más sencilla de preparar inmuebles para el mercado.",servicesIntro:"Nuestro proceso digital está pensado para profesionales inmobiliarios que necesitan planos claros y coherentes sin coordinar una visita presencial estándar para cada inmueble.",service1Title:"Planos digitales 2D",service1Text:"Planos claros y fáciles de leer, elaborados a partir de planos existentes o medidas de origen adecuadas, para marketing inmobiliario y comprensión del consumidor.",service2Title:"Redibujo de planos",service2Text:"Los planos existentes pueden redibujarse con una presentación visual profesional y coherente, según la calidad y la integridad de los documentos facilitados.",service3Title:"Paquetes para varios inmuebles",service3Text:"Entregables digitales coherentes para agencias, carteras inmobiliarias, locales comerciales y promociones residenciales.",service4Title:"Apoyo a la presentación de venta",service4Text:"Planos preparados para complementar anuncios inmobiliarios, folletos de venta u otros materiales de marketing acordados.",service5Title:"Residencial y comercial",service5Text:"Servicio para apartamentos, viviendas, oficinas, locales comerciales y otros tipos de inmuebles cuando exista documentación adecuada.",service6Title:"Visualización adicional",service6Text:"Se pueden valorar distribuciones alternativas, planos amueblados u otros trabajos de visualización como servicios adicionales, según el encargo y la documentación.",
+valueEyebrow:"Adaptado a su flujo de trabajo",valueTitle:"Usted aporta los documentos. Nosotros preparamos la presentación.",valueLead:"Parta de la información que ya tiene: planos existentes, dibujos arquitectónicos o datos catastrales relevantes. Revisamos el material y confirmamos qué puede prepararse de forma razonable antes de empezar.",value1:"No se requiere una visita presencial estándar.",value2:"Solicitud y comunicación digitales.",value3:"Entrega profesional en PDF y PNG/JPG.",value4:"Adecuado para marketing inmobiliario dirigido al consumidor.",value5:"Presupuestos personalizados para clientes B2B y grandes carteras.",sourceNotice:"Nota sobre la documentación: los datos catastrales por sí solos pueden no mostrar la distribución interior actual ni dimensiones verificadas. El resultado depende de los documentos aportados. Comentaremos cualquier dato ausente o dudoso antes de confirmar el encargo.",deliverableEyebrow:"Formatos digitales estándar",deliverableTitle:"Listo para el uso comercial acordado.",deliverableText:"Los archivos finales se entregan en PDF y PNG/JPG, según lo acordado. El plano está destinado a facilitar la comprensión del consumidor y el marketing inmobiliario; no es automáticamente un documento arquitectónico o catastral certificado.",
+processEyebrow:"Cómo funciona",processTitle:"Cuatro pasos claros. Un proceso digital.",processIntro:"El alcance, la documentación, el precio y las condiciones de entrega se acuerdan antes de iniciar la producción.",step1Title:"Envíe su consulta",step1Text:"Indique los datos del inmueble, el uso previsto y la documentación disponible.",step2Title:"Revisión y presupuesto",step2Text:"Revisamos la información y confirmamos viabilidad, alcance y precio.",step3Title:"Preparación digital",step3Text:"Preparamos el plano acordado a partir de la documentación aceptada.",step4Title:"Entrega digital",step4Text:"Reciba los archivos PDF y PNG/JPG acordados para la presentación prevista.",
+examplesEyebrow:"Aplicaciones ilustrativas",examplesTitle:"Un estándar claro para distintos tipos de inmuebles.",examplesIntro:"Las imágenes siguientes son ejemplos ilustrativos de estilos de presentación, no proyectos realizados para clientes de Vestra.",example1Title:"Vivienda residencial",example1Text:"Una distribución 2D clara para anuncios de apartamentos y casas.",example2Title:"Espacio comercial",example2Text:"Una distribución legible para oficinas, locales y anuncios comerciales.",example3Title:"Unidades de promoción",example3Text:"Un estilo coherente para varias unidades de una cartera o promoción.",
+ctaEyebrow:"Para empresas inmobiliarias",ctaTitle:"Simplifique la presentación de sus inmuebles.",ctaText:"Envíenos la documentación disponible. Revisaremos la solicitud y propondremos el alcance adecuado para el inmueble o la cartera.",ctaButton:"Solicitar presupuesto B2B",
+faqEyebrow:"Preguntas frecuentes",faqTitle:"Antes de empezar.",faqIntro:"Unas expectativas claras nos ayudan a entregar el resultado adecuado para la comercialización del inmueble.",faq1Q:"¿Qué documentos puedo enviar?",faq1A:"Puede enviar planos existentes, dibujos arquitectónicos, información catastral disponible u otros documentos pertinentes. Evaluaremos si son adecuados para el resultado solicitado.",faq2Q:"¿Pueden trabajar únicamente con datos catastrales?",faq2A:"Pueden ayudar a identificar o contextualizar un inmueble, pero quizá no incluyan la distribución interior ni dimensiones verificadas. Confirmaremos la viabilidad tras revisar la documentación disponible.",faq3Q:"¿Qué formatos recibiré?",faq3A:"Los formatos estándar acordados son PDF y PNG/JPG. Cualquier formato adicional o archivo fuente editable debe acordarse por escrito.",faq4Q:"¿Ofrecen precios fijos?",faq4A:"Los precios se facilitan bajo solicitud. Cada presupuesto depende de la documentación, el tipo de inmueble, la complejidad, el número de planos, la presentación solicitada y el plazo acordado.",faq5Q:"¿Es un plano arquitectónico oficial o certificado?",faq5A:"No por defecto. El servicio está destinado a la comprensión del consumidor y al marketing inmobiliario. El uso oficial, catastral, para licencias o construcción requiere confirmación específica y puede exigir un profesional local cualificado.",faq6Q:"¿Se aplican contratos y condiciones B2B?",faq6A:"Sí. Los servicios para empresas se prestan conforme al presupuesto escrito, contrato de servicios y condiciones aplicables. El trabajo comienza tras aceptar el alcance y las condiciones comerciales.",faq7Q:"¿Cómo gestionan la documentación confidencial?",faq7A:"El envío y tratamiento de documentos deben seguir los acuerdos de confidencialidad y gestión de datos aplicables. No envíe documentos sensibles hasta que exista un método de envío aprobado y las condiciones correspondientes.",
+contactEyebrow:"Inicie un proyecto",contactTitle:"Solicite un presupuesto personalizado.",contactText:"Cuéntenos sobre su empresa, el inmueble y la documentación disponible. Revisaremos su consulta y le indicaremos los siguientes pasos.",contactEmailLabel:"Correo electrónico",contractNote:"Las consultas B2B están sujetas al presupuesto, contrato y condiciones aplicables.",formName:"Nombre",formCompany:"Empresa",formEmail:"Correo profesional",formProperty:"Tipo de inmueble",formChoose:"Seleccione una opción",optResidential:"Residencial",optCommercial:"Comercial",optDevelopment:"Promoción / varias unidades",optOther:"Otro",formQuantity:"Número de planos",formSource:"Documentación disponible",sourcePlans:"Plano / dibujo existente",sourceCadastral:"Información catastral",sourceBoth:"Ambos",sourceOther:"Otro / no estoy seguro",formDetails:"Detalles del proyecto",formConsentText:"Acepto que Vestra se ponga en contacto conmigo sobre esta consulta comercial.",formSubmit:"Preparar consulta por correo",formNote:"Esta demostración abre su aplicación de correo. Un portal seguro de carga y el envío automático requieren integrar un formulario y un servicio de correo.",footerSub:"Un servicio digital especializado de Vestra Interior & Design.",footerContact:"Contacto",footerPrivacy:"Política de privacidad (añadir antes del lanzamiento)",footerTerms:"Condiciones B2B (añadir antes del lanzamiento)"
+},
+fr:{
+topbar:"PLANS NUMÉRIQUES · PRÉSENTATION IMMOBILIÈRE B2B",brandSub:"PROPERTY PLANS · BY VESTRA INTERIOR & DESIGN",navServices:"Services",navProcess:"Fonctionnement",navExamples:"Exemples",navFaq:"FAQ",navCta:"Demander un devis",
+heroEyebrow:"Un service numérique pour les professionnels de l’immobilier",heroTitle:"Des documents immobiliers à une présentation professionnelle pour la vente.",heroLead:"Envoyez-nous les informations disponibles sur le bien, les données cadastrales ou les plans architecturaux existants. Nous préparons un plan numérique clair et professionnel pour accompagner la commercialisation et la vente du bien.",heroCta1:"Faire une demande",heroCta2:"Découvrir le processus",meta1:"✓ Processus numérique",meta2:"✓ Livraison PDF + PNG/JPG",meta3:"✓ Service B2B · Tarif sur demande",artLabel1:"Plan illustratif · Logement",artLabel2:"Une présentation immobilière plus claire",illustrationNote:"Visuels fournis à titre illustratif uniquement. Les plans définitifs sont préparés à partir de documents sources adaptés et du périmètre convenu.",
+servicesEyebrow:"Le service",servicesTitle:"Une manière plus simple de préparer un bien pour le marché.",servicesIntro:"Notre processus numérique s’adresse aux professionnels de l’immobilier qui ont besoin de plans clairs et cohérents sans organiser systématiquement une visite sur place pour chaque bien.",service1Title:"Plans 2D numériques",service1Text:"Des plans clairs et faciles à lire, réalisés à partir de plans existants ou de mesures sources adaptées, pour la commercialisation et la compréhension du bien par le public.",service2Title:"Redessin de plans",service2Text:"Les plans existants peuvent être redessinés dans un format visuel professionnel et cohérent, selon la qualité et l’exhaustivité des documents fournis.",service3Title:"Offres multi-biens",service3Text:"Des livrables numériques cohérents pour les agences, portefeuilles immobiliers, locaux commerciaux et programmes résidentiels.",service4Title:"Support de présentation commerciale",service4Text:"Des plans conçus pour compléter une annonce immobilière, une brochure commerciale ou tout autre support marketing convenu.",service5Title:"Résidentiel et commercial",service5Text:"Un service pour les appartements, maisons, bureaux, commerces et autres types de biens lorsque des documents sources adaptés sont disponibles.",service6Title:"Visualisation complémentaire",service6Text:"Des variantes d’aménagement, plans meublés ou autres visualisations peuvent être étudiés comme services complémentaires, selon le brief et les documents disponibles.",
+valueEyebrow:"Adapté à votre organisation",valueTitle:"Vous fournissez les documents. Nous préparons la présentation.",valueLead:"Commencez avec les éléments dont vous disposez déjà : plans existants, dessins architecturaux ou informations cadastrales pertinentes. Nous examinons les documents et confirmons ce qui peut raisonnablement être réalisé avant de commencer.",value1:"Aucun rendez-vous standard sur place n’est nécessaire.",value2:"Demande et échanges numériques.",value3:"Livraison professionnelle en PDF et PNG/JPG.",value4:"Adapté à la commercialisation immobilière auprès du grand public.",value5:"Devis personnalisés pour les clients B2B et les portefeuilles importants.",sourceNotice:"À propos des documents sources : les seules données cadastrales peuvent ne pas indiquer l’agencement intérieur actuel ni des dimensions vérifiées. Le livrable dépend des documents fournis. Toute information manquante ou incertaine sera discutée avant confirmation de la commande.",deliverableEyebrow:"Formats numériques standards",deliverableTitle:"Prêt pour l’usage marketing convenu.",deliverableText:"Les fichiers finaux sont livrés en PDF et PNG/JPG, selon l’accord du projet. Le plan vise à faciliter la compréhension du bien et sa commercialisation ; il ne constitue pas automatiquement un document architectural ou cadastral certifié.",
+processEyebrow:"Fonctionnement",processTitle:"Quatre étapes claires. Un processus numérique.",processIntro:"Le périmètre, les documents sources, le prix et les délais sont convenus avant le début de la production.",step1Title:"Envoyez votre demande",step1Text:"Présentez le bien, l’usage prévu et les documents disponibles.",step2Title:"Analyse et devis",step2Text:"Nous examinons les informations et confirmons la faisabilité, le périmètre et le prix.",step3Title:"Préparation numérique",step3Text:"Le plan convenu est préparé à partir des documents sources acceptés.",step4Title:"Livraison numérique",step4Text:"Recevez les fichiers PDF et PNG/JPG convenus pour la présentation prévue.",
+examplesEyebrow:"Applications illustratives",examplesTitle:"Un standard clair pour différents types de biens.",examplesIntro:"Les visuels ci-dessous illustrent des styles de présentation ; ils ne représentent pas des projets clients réalisés par Vestra.",example1Title:"Bien résidentiel",example1Text:"Un plan 2D clair pour les annonces d’appartements et de maisons.",example2Title:"Local commercial",example2Text:"Un plan lisible pour les bureaux, commerces et annonces commerciales.",example3Title:"Lots de programme immobilier",example3Text:"Un style cohérent pour plusieurs lots d’un portefeuille ou d’un programme.",
+ctaEyebrow:"Pour les entreprises immobilières",ctaTitle:"Simplifiez la présentation de vos biens.",ctaText:"Envoyez les documents dont vous disposez. Nous étudierons la demande et proposerons le périmètre adapté à votre bien ou portefeuille.",ctaButton:"Demander un devis B2B",
+faqEyebrow:"Questions fréquentes",faqTitle:"Avant de commencer.",faqIntro:"Des attentes claires nous aident à fournir le résultat adapté à la commercialisation de votre bien.",faq1Q:"Quels documents puis-je fournir ?",faq1A:"Vous pouvez envoyer des plans existants, dessins architecturaux, informations cadastrales disponibles ou autres documents pertinents. Nous évaluerons leur adéquation avec le livrable demandé.",faq2Q:"Pouvez-vous travailler uniquement à partir des données cadastrales ?",faq2A:"Elles peuvent aider à identifier ou contextualiser un bien, mais ne contiennent pas nécessairement l’agencement intérieur ni des dimensions vérifiées. Nous confirmerons la faisabilité après examen des documents disponibles.",faq3Q:"Quels formats vais-je recevoir ?",faq3A:"Les formats standards convenus sont PDF et PNG/JPG. Tout format supplémentaire ou fichier source modifiable doit faire l’objet d’un accord écrit.",faq4Q:"Proposez-vous des prix fixes ?",faq4A:"Les tarifs sont communiqués sur demande. Chaque devis dépend des documents sources, du type de bien, de la complexité, du nombre de plans, de la présentation souhaitée et du délai convenu.",faq5Q:"S’agit-il d’un plan architectural officiel ou certifié ?",faq5A:"Pas par défaut. Le service vise la compréhension du bien par le public et sa commercialisation. Un usage officiel, cadastral, lié aux permis ou à la construction nécessite une confirmation distincte et peut exiger un professionnel local qualifié.",faq6Q:"Les contrats et conditions B2B s’appliquent-ils ?",faq6A:"Oui. Les services destinés aux entreprises sont fournis selon le devis écrit, le contrat de service et les conditions applicables. Le travail commence après acceptation du périmètre et des conditions commerciales.",faq7Q:"Comment gérez-vous les documents confidentiels ?",faq7A:"La transmission et le traitement des documents doivent respecter les accords de confidentialité et de gestion des données convenus. N’envoyez pas de documents sensibles avant la mise en place d’un moyen de transmission approuvé et des conditions applicables.",
+contactEyebrow:"Démarrer un projet",contactTitle:"Demandez un devis personnalisé.",contactText:"Présentez-nous votre entreprise, le bien et les documents disponibles. Nous examinerons votre demande et vous indiquerons les prochaines étapes.",contactEmailLabel:"E-mail",contractNote:"Les demandes B2B sont soumises au devis, au contrat et aux conditions applicables.",formName:"Nom",formCompany:"Entreprise",formEmail:"E-mail professionnel",formProperty:"Type de bien",formChoose:"Veuillez sélectionner",optResidential:"Résidentiel",optCommercial:"Commercial",optDevelopment:"Programme / plusieurs lots",optOther:"Autre",formQuantity:"Nombre de plans",formSource:"Documents sources disponibles",sourcePlans:"Plan / dessin existant",sourceCadastral:"Informations cadastrales",sourceBoth:"Les deux",sourceOther:"Autre / incertain",formDetails:"Détails du projet",formConsentText:"J’accepte que Vestra me contacte au sujet de cette demande professionnelle.",formSubmit:"Préparer la demande par e-mail",formNote:"Cette démonstration ouvre votre application de messagerie. Un portail de dépôt sécurisé et un envoi automatique nécessitent l’intégration d’un formulaire et d’un service e-mail.",footerSub:"Un service numérique spécialisé de Vestra Interior & Design.",footerContact:"Contact",footerPrivacy:"Politique de confidentialité (à ajouter avant lancement)",footerTerms:"Conditions B2B (à ajouter avant lancement)"
+}
+};
+function setLanguage(lang){
+  const t=translations[lang]||translations.en;
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.getAttribute("data-i18n");
+    if(t[key]!==undefined){
+      if(key==="sourceNotice") el.textContent=t[key];
+      else el.textContent=t[key];
+    }
+  });
+  document.title = ({
+    en:"Vestra Property Plans | Digital Floor Plans for Real Estate",
+    nl:"Vestra Property Plans | Digitale plattegronden voor vastgoed",
+    es:"Vestra Property Plans | Planos digitales inmobiliarios",
+    fr:"Vestra Property Plans | Plans immobiliers numériques"
+  })[lang];
+}
+document.getElementById("language").addEventListener("change",e=>setLanguage(e.target.value));
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("enquiryForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const f=new FormData(this);
+  const subject=encodeURIComponent("Vestra Property Plans — B2B enquiry");
+  const body=encodeURIComponent(
+    "New B2B enquiry for Vestra Property Plans\n\n"+
+    "Name: "+f.get("name")+"\nCompany: "+f.get("company")+"\nBusiness email: "+f.get("email")+
+    "\nProperty type: "+f.get("propertyType")+"\nNumber of floor plans: "+(f.get("quantity")||"Not specified")+
+    "\nSource documents: "+(f.get("source")||"Not specified")+"\n\nProject details:\n"+f.get("details")+
+    "\n\nPlease reply to the business email above."
+  );
+  window.location.href="mailto:info@vestra-interior.com?subject="+subject+"&body="+body;
+});
+setLanguage("en");
+</script>
+</body>
+</html>
